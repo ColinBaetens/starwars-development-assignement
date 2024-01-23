@@ -9,6 +9,9 @@ const Nav = () =>{
                 <li>
                     <Link to="/">Home</Link>
                 </li>
+                <li>
+                    <Link to="https://www.linkedin.com/in/colin-baetens-2a5429220/" target='_blank'>Contact</Link>
+                </li>
             </ul>
         </nav>
     )
