@@ -7,6 +7,7 @@ const Home = () =>{
     const [character, setCharacter] = useState("")
     const [movieData, setMovieData] = useState([])
     const [starshipData, setStarshipData] = useState([])
+    const [vehicleData, setVehicleData] = useState([])
     const [characterData, setCharacterData] = useState([])
     const [error, setError] = useState(null)
 
@@ -29,7 +30,23 @@ const Home = () =>{
             const response = await axios.get(`https://swapi.dev/api/starships`);
             setStarshipData(response.data.results);
             setError(null);
-            console.log(starshipData.length)
+            // console.log(starshipData.length)
+
+          }
+          catch(error){
+          setError('Error fetching character data')
+          
+        }
+      }
+
+      const getVehicles= async()=>{
+
+        try 
+        {
+            const response = await axios.get(`https://swapi.dev/api/vehicles`);
+            setVehicleData(response.data.results);
+            setError(null);
+            // console.log(starshipData.length)
 
           }
           catch(error){
@@ -69,6 +86,7 @@ const Home = () =>{
         getCharacter()
         getFilms()
         getStarships()
+        getVehicles()
       }
       useEffect(()=>{
         
@@ -95,9 +113,11 @@ const Home = () =>{
             {characterData.length === 0 && <p className="error-message">This character does not exist in this universe</p>}
             
         {characterData.map((data)=> {
-          //  console.log(data)
+            console.log(data)
           const totalStarships = starshipData.length;
+          const totalVehicles = vehicleData.length;
           let pilotedStarships=0;
+          let pilotedVehicles=0;
         return (
           <div key={data.url} className='container'>
             <div className="content-info">
@@ -109,8 +129,8 @@ const Home = () =>{
               </div>
               <div className="content-info-middle content-card">
                 <h2 >Characteristics</h2>
-                <p> Height: {data.height}</p>
-                <p>Weight:  {data.mass}</p>
+                <p> Height: {data.height} cm</p>
+                <p>Weight:  {data.mass} kg</p>
                 <p> Eye Color:  {data.eye_color}</p>
                 <p> Hair Color: {data.hair_color}</p>
                 <p>Skin Color:  {data.skin_color}</p>
@@ -159,6 +179,33 @@ const Home = () =>{
                   })}
                    {pilotedStarships < 1 ? (
                     <div>This person has not piloted any starships yet</div>
+                  ) : null}
+              </div>
+              <div className="content-info-right content-card">
+              <h2 className="vehicles-name">Vehicles</h2>
+                  {vehicleData.map(function (vehicle) {
+                    
+                    
+                    return vehicle.pilots.map(function (pilot) {
+                      
+                      if (pilot === data.url) {
+                        console.log('Match found for:', vehicle.name);
+                        pilotedVehicles +=1;
+                        
+                        return (
+                          <div key={vehicle.name}>{vehicle.name}</div>
+                        );
+                      }
+                      
+                      
+                      return null;
+        
+                     
+                    });
+                    
+                  })}
+                   {pilotedVehicles < 1 ? (
+                    <div>This person has not piloted any vehicles yet</div>
                   ) : null}
               </div>
             </div>
