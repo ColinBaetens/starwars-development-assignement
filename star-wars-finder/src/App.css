@@ -16,7 +16,7 @@ nav li a {
 }
 body {
   background-color: black;
-  color: yellow;
+  color: white;
 }
 
 .container {
@@ -28,6 +28,7 @@ body {
   text-align: center;
 }
 .content-info {
+  color: white;
   display: flex;
   margin-top: 3rem;
   justify-content: space-evenly;
@@ -35,4 +36,44 @@ body {
 .error-message{
   margin-top: 2rem;
   text-align: center;
+  color: white;
+}
+h2{
+  margin-top: 0;
+  color: yellow;
+  
+}
+form{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+form input{
+margin-top: 1rem;
+padding:7px 7px ;
+border-radius: 8px;
+}
+form button{
+  margin-top: 1rem;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+.right_movies div{
+  margin: 16px 0px;
+}
+/* .content-card{
+  border-radius: 10px;
+  margin: 10px;
+  width: 30%;
+  padding: 10px;
+  background-color: white;
+} */
+.page-title{
+  color: yellow;
 }

@@ -84,7 +84,7 @@ const Home = () =>{
     return(
         <div className="content">
             <div className="heading">
-            <h2>Find the one you're looking for</h2>
+            <h2 className="page-title">Find the one you're looking for</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={handleChange} value={character} placeholder="Enter character name"></input>
                 <button type="submit">Search</button>
@@ -101,13 +101,13 @@ const Home = () =>{
         return (
           <div key={data.url} className='container'>
             <div className="content-info">
-              <div className="content-info-left">
+              <div className="content-info-left content-card">
                 <h2>Information</h2>
                 <p> Full name: {data.name}</p>
                 <p>Birth Year:  {data.birth_year}</p>
                 <p> Gender:  {data.gender}</p>
               </div>
-              <div className="content-info-middle">
+              <div className="content-info-middle content-card">
                 <h2 >Characteristics</h2>
                 <p> Height: {data.height}</p>
                 <p>Weight:  {data.mass}</p>
@@ -115,7 +115,7 @@ const Home = () =>{
                 <p> Hair Color: {data.hair_color}</p>
                 <p>Skin Color:  {data.skin_color}</p>
               </div>
-              <div className="content-info-right">
+              <div className="content-info-right content-card">
                 <div className="right_movies">
                   <h2 className="movies-title">Movies</h2>
                   {movieData.map(function (movie) {
@@ -134,8 +134,8 @@ const Home = () =>{
               </div>
             </div>
             <div className="content-info">
-              <div className="content-info-left">
-              <h2 className="movies-title">Starships</h2>
+              <div className="content-info-left content-card">
+              <h2 className="starships-name">Starships</h2>
                   {starshipData.map(function (starship) {
                     
                     
